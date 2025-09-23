@@ -23,12 +23,12 @@ def benchmark_sort(seed: int = 42) -> None:
 
     # Rust custom quicksort (introsort-based)
     t2 = time.perf_counter()
-    rs_custom_sorted = sorting.quicksort(data_rs_custom)
+    rs_custom_sorted = sorting.sort(data_rs_custom)
     t3 = time.perf_counter()
 
     # Rust std sort baseline
     t4 = time.perf_counter()
-    rs_std_sorted = sorting.quicksort_std(data_rs_std)
+    rs_std_sorted = sorting.sort_std(data_rs_std)
     t5 = time.perf_counter()
 
     # Validate correctness
