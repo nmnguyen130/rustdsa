@@ -1,10 +1,10 @@
 use pyo3::prelude::*;
 use pyo3::wrap_pyfunction;
 
-use crate::algorithms::sorting;
+use crate::core::algorithms::sorting;
 
-#[pyfunction(name = "sort")]
-fn py_sort(mut values: Vec<i64>) -> PyResult<Vec<i64>> {
+#[pyfunction(name = "introsort")]
+fn py_introsort(mut values: Vec<i64>) -> PyResult<Vec<i64>> {
     sorting::introsort(&mut values);
     Ok(values)
 }
@@ -15,8 +15,8 @@ fn py_sort_std(mut values: Vec<i64>) -> PyResult<Vec<i64>> {
     Ok(values)
 }
 
-pub fn register_py(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(py_sort, m)?)?;
+pub fn register_sorts(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(py_introsort, m)?)?;
     m.add_function(wrap_pyfunction!(py_sort_std, m)?)?;
     Ok(())
 }
